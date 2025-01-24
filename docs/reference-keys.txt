@@ -7,3 +7,15 @@ environments
 programs
 loops
 template
+first-steps
+exercises
+individual-geoms
+collective-geoms
+statistical-summaries
+maps
+networks
+annotations
+arranging-plots
+position-scales-and-axes
+colour-scales-and-legends
+other-aesthetics

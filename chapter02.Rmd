@@ -2,26 +2,83 @@
 
 **Learning objectives:**
 
-- The R User Interface
-- Objects
-- Functions
-- Writing Your Own Functions
-- Arguments
-- Scripts
+- the foundations of ggplot
+- useful “recipes”
+- Fuel economy data use
+
+## Mapping components {-}
+
+- Layer
+- Scale
+- Coord
+- Facet
+- Theme
+
+## Other R graphics {-}
+
+- Base R
+- grid
+- lattice
+- htmlwidgets
+- plotly
+
+## Fuel economy data {-}
+
+### Exercises
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+- List five functions that you could use to get more information about the mpg dataset.
+
+`summary, table, mean, sd, var, quantile, max, min, range, ncol, is.na`
+
+- How can you find out what other datasets are included with ggplot2?
+
+`data(package = "ggplot2")`
+
+- Apart from the US, most countries use fuel consumption (fuel consumed over fixed distance) rather than fuel economy (distance travelled with fixed amount of fuel). How could you convert cty and hwy into the European standard of l/100km?
+
+`mpg %>% mutate(cgp100km = 2.35/cty*100, hgp100km = 235 / hwy)`
+
+- Which manufacturer has the most models in this dataset? 
+
+```{r}
+mpg %>% count(manufacturer) %>% arrange(desc(n))
+
+mpg |>
+  group_by(manufacturer) |>
+  summarise(n = n()) |> 
+  filter(n == max(n))
+
+tapply(mpg$manufacturer, INDEX = mpg$manufacturer, FUN = length) |> 
+  # which.max()
+  sort() |> 
+  tail(1)
+```
+
+- Which model has the most variations?
+
+```{r}
+mpg %>% count(model) %>% arrange(desc(n))
+```
+
+- Does your answer change if you remove the redundant specification of drive train (e.g. “pathfinder 4wd”, “a4 quattro”) from the model name?
+
+```{r}
+mpg %>%
+  mutate(model = sub(" 4wd", "", model),
+         model = sub(" awd", "", model),
+         model = sub(" 2wd", "", model),
+         model = sub(" quattro", "", model)
+         ) %>% count(model) %>% arrange(desc(n))
+```
 
 
-## The R User Interface {-}
+## Key components {-}
 
-- 
-
-
-## Objects {-}
-
-## Functions {-}
-
-## Writing Your Own Functions {-}
-
-## Arguments {-}
+**three** key components of a ggplot2 plot
 
 ## Scripts {-}
 
