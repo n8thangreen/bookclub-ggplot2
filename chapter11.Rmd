@@ -1,4 +1,4 @@
-# Loops
+# Colour scales and legends
 
 **Learning objectives:**
 

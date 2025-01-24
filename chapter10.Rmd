@@ -1,4 +1,4 @@
-# Statistical summaries
+# Position scales and axes
 
 **Learning objectives:**
 
