@@ -1,0 +1,12 @@
+Package: bookclub-hopr
+Title: Hands-on Programming with R Book Club
+Version: 0.0.1
+Authors@R: 
+    person("Nathan Green", , , "n.green@ucl.ac.uk", role = c("aut", "cre", "cph"))
+URL: https://github.com/n8thangreen/bookclub-hopr
+Depends:
+    R (>= 3.1.0)
+Imports: 
+    bookdown,
+    rmarkdown
+Encoding: UTF-8

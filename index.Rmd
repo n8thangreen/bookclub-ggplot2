@@ -1,0 +1,34 @@
+--- 
+title: "Hands-on Programming with R Book Club"
+author: "ICON book club"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: book.bib
+biblio-style: apalike
+link-citations: yes
+github-repo: r4ds/bookclub-hopr
+description: "This website is the product of the ICON Hands-on Programming with R Book Club."
+---
+
+# Welcome {-}
+
+Welcome to the Hands-on Programming with R book club! 
+
+This website is a companion for the book [_Hands-on Programming with R_](https://rstudio-education.github.io/hopr/) by Garrett Grolemund.
+
+This companion follows the [Data Science Learning Community Code of Conduct](https://dslc.io/code_of_conduct.html).
+
+## Book club meetings {-}
+
+- Each week, a volunteer will present a chapter from the book (or part of a chapter).
+  - **This is the best way to learn the material!**
+- Presentations will usually consist of a review of the material, a discussion, and/or a demonstration of the principles presented in that chapter.
+- More information about how to present is available in the [github repo](https://github.com/n8thangreen/bookclub-hopr).
+- Presentations will be recorded, and will be available on the [where?]().
+
+## Pace {-}
+
+- We'll _try_ to cover 1 chapter/week, but...
+- ...It's ok to split chapters when they feel like too much.
+- We will try to meet every week, but will likely take some breaks for holidays, etc.

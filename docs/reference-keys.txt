@@ -1,0 +1,9 @@
+weighted-dice
+the-very-basics
+packages-and-help-pages
+r-objects
+modifying-values
+environments
+programs
+loops
+template
