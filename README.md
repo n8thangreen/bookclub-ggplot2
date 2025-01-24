@@ -1,8 +1,8 @@
-# Hands-On Programming with R Book Club
+# ggplot2: Elegant Graphics for Data Analysis (3e) Book Club
 
-Welcome to the Hands-On Programming with R Book Club!
+Welcome to the ggplot2: Elegant Graphics for Data Analysis (3e) Book Club!
 
-We are working together to read [Hands-On Programming with R](https://rstudio-education.github.io/hopr/) by Garrett Grolemund.
+We are working together to read [ggplot2: Elegant Graphics for Data Analysis (3e) Book Club](https://ggplot2-book.org/) by Hadley Wickham.
 If you would like a print version, please consider purchasing it using our [Amazon Affiliates link]({{{print_url}}}).
 As we read, we are producing [notes about the book](https://dslc.io/{{{book_abbr}}}).
 
@@ -34,7 +34,7 @@ Do these steps each time you present another chapter:
 10. When your PR has been accepted ("merged"), `usethis::pr_finish()` to close out your branch and prepare your local repository for future work.
 11. Now that your local copy is up-to-date with the main repo, you need to update your remote fork. Run `gert::git_push("origin")` or click the `Push` button on the `Git` tab of Rstudio.
 
-When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://dslc.io/bookclub-hopr).
+When your PR is checked into the main branch, the bookdown site will rebuild, adding your slides to [this site](https://dslc.io/bookclub-ggplot2).
 
 
 ## Code of Conduct
