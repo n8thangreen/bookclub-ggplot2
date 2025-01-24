@@ -1,6 +1,6 @@
-book_filename: "bookclub-hopr"
-repo: https://github.com/n8thangreen/bookclub-hopr
-edit: "https://github.com/n8thangreen/bookclub-hopr/edit/main/%s"
+book_filename: "bookclub-ggplot2"
+repo: https://github.com/n8thangreen/bookclub-ggplot2
+edit: "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/%s"
 output_dir: "docs"
 delete_merged_file: true
 language:
