@@ -1,12 +1,3 @@
-weighted-dice
-the-very-basics
-packages-and-help-pages
-r-objects
-modifying-values
-environments
-programs
-loops
-template
 first-steps
 exercises
 individual-geoms
@@ -19,3 +10,4 @@ arranging-plots
 position-scales-and-axes
 colour-scales-and-legends
 other-aesthetics
+template

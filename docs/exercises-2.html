@@ -314,12 +314,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li></li>
 </ol>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="exercises-2.html#cb32-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy, <span class="at">shape =</span> trans)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
-<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values because more
-## than 6 becomes difficult to discriminate
-## ℹ you have requested 10 values. Consider specifying shapes manually if you need
-##   that many have them.</code></pre>
-<pre><code>## Warning: Removed 96 rows containing missing values or values outside the scale range
-## (`geom_point()`).</code></pre>
+<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values because more than 6 becomes difficult to discriminate
+## ℹ you have requested 10 values. Consider specifying shapes manually if you need that many have them.</code></pre>
+<pre><code>## Warning: Removed 96 rows containing missing values or values outside the scale range (`geom_point()`).</code></pre>
 <p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <ul>
 <li>6 shapes used but need 10</li>
