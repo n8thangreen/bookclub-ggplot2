@@ -80,8 +80,227 @@ mpg %>%
 
 **three** key components of a ggplot2 plot
 
-## Scripts {-}
+- data
+- aesthetics
+- geom
 
+e.g.
+
+```{r}
+ggplot(mpg, aes(x = displ, y = hwy)) + 
+  geom_point()
+```
+
+
+```{r eval=FALSE}
+ggplot() + 
+  geom_point(mpg, aes(x = displ, y = hwy))
+```
+
+```{r}
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy))
+```
+
+```{r}
+ggplot() + 
+  geom_point(data = mpg, mapping = aes(x = displ, y = hwy))
+```
+
+```{r}
+ggplot(midwest) + 
+  geom_point(data = mpg, aes(x = displ, y = hwy))
+```
+
+## Exercises {-}
+
+1. 
+
+```{r}
+ggplot(mpg, aes(x = cty, y = hwy)) + 
+  geom_point()
+```
+
+- directly correlated
+- issues
+  * discrete measurements
+  * overplotting
+  * scale
+
+2. 
+
+```{r}
+ggplot(mpg, aes(model, manufacturer)) + geom_point()
+```
+
+- This plot maps model (specific car models) to the x-axis and manufacturer to the y-axis. Each point represents one observation in the dataset.
+
+- usefulness
+  * both variables are categorical
+  * no natural order
+  * cluttered
+
+- informative
+  * aggregate
+  * reorder
+  * facet
+
+3.
+
+```{r}
+ggplot(mpg, aes(cty, hwy)) + geom_point()
+```
+
+```{r}
+ggplot(diamonds, aes(carat, price)) + geom_point()
+```
+
+```{r}
+ggplot(economics, aes(date, unemploy)) + geom_line()
+```
+
+```{r}
+ggplot(mpg, aes(cty)) + geom_histogram()
+```
+
+
+## Colour, size, shape and other aesthetic attributes {-}
+
+
+- ggplot2 takes care of the details of converting data (e.g., ‘f’, ‘r’, ‘4’) into aesthetics (e.g., ‘red’, ‘yellow’, ‘green’) with a scale.
+
+```{r}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+- no 'scaling'
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
+ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+```
+
+- the second plots doesn't have a legend
+- think about how to colour
+  * tell a story
+  * less is more!
+
+## Exercises {-}
+
+1. 
+
+- map to continuous values
+  * gradient scale
+
+```{r}
+ggplot(mpg, aes(cty, hwy, colour = displ)) + geom_point()
+```
+
+-  categorical variable
+  * unique colour
+
+```{r}
+ggplot(mpg, aes(cty, hwy, colour = class)) + geom_point()
+```
+
+- more than one aesthetic
+  
+```{r}
+ggplot(mpg, aes(cty, hwy, colour = class, size = displ)) + geom_point()
+```
+
+2.
+
+- throw error
+  * shapes discrete
+
+```{r eval=FALSE}
+ggplot(mpg, aes(cty, hwy, shape = displ)) + geom_point()
+```
+
+![](https://www.datanovia.com/en/wp-content/uploads/dn-tutorials/ggplot2/figures/030-ggplot-point-shapes-r-pch-list-showing-different-point-shapes-in-rstudio-1.png)
+
+3.
+
+```{r}
+ggplot(mpg, aes(cty, hwy, shape = trans)) + geom_point()
+```
+
+- 6 shapes used but need 10
+
+
+## Facets {-}
+
+- Facets are a way of splitting a plot into multiple panels based on the values of a variable.
+
+- grid and wrapped
+- when to use this vs aesthetics?
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  facet_wrap(~class)
+```
+
+### Exercises {-}
+
+1.
+
+- divides in to `bins`
+
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ hwy)
+```
+
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+```
+
+2. 
+
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ cyl)
+```
+
+- no. cyclinders increase -> bigger engines, more fuel consumption
+
+3.
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ class, nrow = 2, ncol = 4)
+```
+
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ class, nrow = 2)
+```
+
+4.
+
+- The `scales` argument controls whether the axes in the facets are fixed or allowed to vary independently.
+
+- Options:
+  * `fixed` (default): All facets share the same x and y-axis scales.
+  * `free_x`: Each facet has its own x-axis scale.
+  * `free_y`: Each facet has its own y-axis scale.
+  * `free`: Each facet has its own x and y-axis scales.
+
+- use when scale are different/the same
+
+```{r}
+ggplot(mpg, aes(displ, cty)) +
+  geom_point() +
+  facet_wrap(~ class, scales = "free")
+```
 
 ## Meeting Videos {-}
 
