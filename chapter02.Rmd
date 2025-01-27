@@ -2,8 +2,8 @@
 
 **Learning objectives:**
 
-- the foundations of ggplot
-- useful “recipes”
+- The foundations of ggplot
+- Useful “recipes”
 - Fuel economy data use
 
 ## Mapping components {-}
@@ -16,27 +16,45 @@
 
 ## Other R graphics {-}
 
-- Base R
-- grid
-- lattice
-- htmlwidgets
-- plotly
+- Base `R`
+- `grid`
+- `lattice`
+- `htmlwidgets`
+- `plotly`
 
 ## Fuel economy data {-}
 
 ### Exercises
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 ```
 
 - List five functions that you could use to get more information about the mpg dataset.
 
-`summary, table, mean, sd, var, quantile, max, min, range, ncol, is.na`
+`summary, table, mean, sd, var, quantile, max, min, range, ncol, is.na` ...
 
 - How can you find out what other datasets are included with ggplot2?
 
 `data(package = "ggplot2")`
+
+```
+Data sets in package ‘ggplot2’:
+
+diamonds                    Prices of over 50,000 round cut diamonds
+economics                   US economic time series
+economics_long              US economic time series
+faithfuld                   2d density estimate of Old Faithful data
+luv_colours                 'colors()' in Luv space
+midwest                     Midwest demographics
+mpg                         Fuel economy data from 1999 to 2008 for 38 popular
+                            models of cars
+msleep                      An updated and expanded version of the mammals sleep
+                            dataset
+presidential                Terms of 12 presidents from Eisenhower to Trump
+seals                       Vector field of seal movements
+txhousing                   Housing sales in TX
+```
 
 - Apart from the US, most countries use fuel consumption (fuel consumed over fixed distance) rather than fuel economy (distance travelled with fixed amount of fuel). How could you convert cty and hwy into the European standard of l/100km?
 
@@ -87,14 +105,14 @@ mpg %>%
 e.g.
 
 ```{r}
-ggplot(mpg, aes(x = displ, y = hwy)) + 
+ggplot(data = mpg, aes(displ, hwy)) + 
   geom_point()
 ```
 
 
 ```{r eval=FALSE}
 ggplot() + 
-  geom_point(mpg, aes(x = displ, y = hwy))
+  geom_point(data = mpg, aes(x = displ, y = hwy))
 ```
 
 ```{r}
@@ -108,7 +126,7 @@ ggplot() +
 ```
 
 ```{r}
-ggplot(midwest) + 
+ggplot(data = midwest) + 
   geom_point(data = mpg, aes(x = displ, y = hwy))
 ```
 
@@ -177,8 +195,8 @@ ggplot(mpg, aes(displ, hwy, colour = class)) +
 - no 'scaling'
 
 ```{r}
-ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
 ggplot(mpg, aes(displ, hwy)) + geom_point(colour = "blue")
+ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
 ```
 
 - the second plots doesn't have a legend

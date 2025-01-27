@@ -279,24 +279,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2>Fuel economy data<a href="fuel-economy-data.html#fuel-economy-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="exercises" class="section level3 hasAnchor" number="1.0.1">
 <h3><span class="header-section-number">1.0.1</span> Exercises<a href="fuel-economy-data.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fuel-economy-data.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fuel-economy-data.html#cb5-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fuel-economy-data.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="fuel-economy-data.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <ul>
 <li>List five functions that you could use to get more information about the mpg dataset.</li>
 </ul>
-<p><code>summary, table, mean, sd, var, quantile, max, min, range, ncol, is.na</code></p>
+<p><code>summary, table, mean, sd, var, quantile, max, min, range, ncol, is.na</code> …</p>
 <ul>
 <li>How can you find out what other datasets are included with ggplot2?</li>
 </ul>
 <p><code>data(package = "ggplot2")</code></p>
+<pre><code>Data sets in package ‘ggplot2’:
+
+diamonds                    Prices of over 50,000 round cut diamonds
+economics                   US economic time series
+economics_long              US economic time series
+faithfuld                   2d density estimate of Old Faithful data
+luv_colours                 &#39;colors()&#39; in Luv space
+midwest                     Midwest demographics
+mpg                         Fuel economy data from 1999 to 2008 for 38 popular
+                            models of cars
+msleep                      An updated and expanded version of the mammals sleep
+                            dataset
+presidential                Terms of 12 presidents from Eisenhower to Trump
+seals                       Vector field of seal movements
+txhousing                   Housing sales in TX</code></pre>
 <ul>
 <li>Apart from the US, most countries use fuel consumption (fuel consumed over fixed distance) rather than fuel economy (distance travelled with fixed amount of fuel). How could you convert cty and hwy into the European standard of l/100km?</li>
 </ul>
@@ -304,7 +311,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Which manufacturer has the most models in this dataset?</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="fuel-economy-data.html#cb6-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(manufacturer) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fuel-economy-data.html#cb3-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(manufacturer) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 15 × 2
 ##    manufacturer     n
 ##    &lt;chr&gt;        &lt;int&gt;
@@ -323,24 +330,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 13 land rover       4
 ## 14 mercury          4
 ## 15 lincoln          3</code></pre>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="fuel-economy-data.html#cb8-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="fuel-economy-data.html#cb8-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="fuel-economy-data.html#cb8-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
-<span id="cb8-4"><a href="fuel-economy-data.html#cb8-4" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">==</span> <span class="fu">max</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fuel-economy-data.html#cb5-1" tabindex="-1"></a>mpg <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="fuel-economy-data.html#cb5-2" tabindex="-1"></a>  <span class="fu">group_by</span>(manufacturer) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="fuel-economy-data.html#cb5-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="fuel-economy-data.html#cb5-4" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">==</span> <span class="fu">max</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 2
 ##   manufacturer     n
 ##   &lt;chr&gt;        &lt;int&gt;
 ## 1 dodge           37</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="fuel-economy-data.html#cb10-1" tabindex="-1"></a><span class="fu">tapply</span>(mpg<span class="sc">$</span>manufacturer, <span class="at">INDEX =</span> mpg<span class="sc">$</span>manufacturer, <span class="at">FUN =</span> length) <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="fuel-economy-data.html#cb10-2" tabindex="-1"></a>  <span class="co"># which.max()</span></span>
-<span id="cb10-3"><a href="fuel-economy-data.html#cb10-3" tabindex="-1"></a>  <span class="fu">sort</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb10-4"><a href="fuel-economy-data.html#cb10-4" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fuel-economy-data.html#cb7-1" tabindex="-1"></a><span class="fu">tapply</span>(mpg<span class="sc">$</span>manufacturer, <span class="at">INDEX =</span> mpg<span class="sc">$</span>manufacturer, <span class="at">FUN =</span> length) <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="fuel-economy-data.html#cb7-2" tabindex="-1"></a>  <span class="co"># which.max()</span></span>
+<span id="cb7-3"><a href="fuel-economy-data.html#cb7-3" tabindex="-1"></a>  <span class="fu">sort</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb7-4"><a href="fuel-economy-data.html#cb7-4" tabindex="-1"></a>  <span class="fu">tail</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## dodge 
 ##    37</code></pre>
 <ul>
 <li>Which model has the most variations?</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="fuel-economy-data.html#cb12-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(model) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fuel-economy-data.html#cb9-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span> <span class="fu">count</span>(model) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 38 × 2
 ##    model                   n
 ##    &lt;chr&gt;               &lt;int&gt;
@@ -358,12 +365,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Does your answer change if you remove the redundant specification of drive train (e.g. “pathfinder 4wd”, “a4 quattro”) from the model name?</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="fuel-economy-data.html#cb14-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
-<span id="cb14-2"><a href="fuel-economy-data.html#cb14-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; 4wd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
-<span id="cb14-3"><a href="fuel-economy-data.html#cb14-3" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; awd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
-<span id="cb14-4"><a href="fuel-economy-data.html#cb14-4" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; 2wd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
-<span id="cb14-5"><a href="fuel-economy-data.html#cb14-5" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; quattro&quot;</span>, <span class="st">&quot;&quot;</span>, model)</span>
-<span id="cb14-6"><a href="fuel-economy-data.html#cb14-6" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> <span class="fu">count</span>(model) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fuel-economy-data.html#cb11-1" tabindex="-1"></a>mpg <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="fuel-economy-data.html#cb11-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; 4wd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
+<span id="cb11-3"><a href="fuel-economy-data.html#cb11-3" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; awd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
+<span id="cb11-4"><a href="fuel-economy-data.html#cb11-4" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; 2wd&quot;</span>, <span class="st">&quot;&quot;</span>, model),</span>
+<span id="cb11-5"><a href="fuel-economy-data.html#cb11-5" tabindex="-1"></a>         <span class="at">model =</span> <span class="fu">sub</span>(<span class="st">&quot; quattro&quot;</span>, <span class="st">&quot;&quot;</span>, model)</span>
+<span id="cb11-6"><a href="fuel-economy-data.html#cb11-6" tabindex="-1"></a>         ) <span class="sc">%&gt;%</span> <span class="fu">count</span>(model) <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 37 × 2
 ##    model               n
 ##    &lt;chr&gt;           &lt;int&gt;
