@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Meeting Videos | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club</title>
+  <title>Fundamental Geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club</title>
   <meta name="description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
   <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Meeting Videos | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
+  <meta property="og:title" content="Fundamental Geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
   <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Meeting Videos | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
+  <meta name="twitter:title" content="Fundamental Geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
   
   <meta name="twitter:description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="section-10.html"/>
-<link rel="next" href="other-aesthetics.html"/>
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="exercises-4.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -291,29 +291,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="meeting-videos-9" class="section level2 unnumbered hasAnchor">
-<h2>Meeting Videos<a href="meeting-videos-9.html#meeting-videos-9" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="cohort-1-9" class="section level3 unnumbered hasAnchor">
-<h3>Cohort 1<a href="meeting-videos-9.html#cohort-1-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<iframe src="https://www.youtube.com/embed/URL" width="100%" height="400px" data-external="1">
-</iframe>
-<details>
-<summary>
-Meeting chat log
-</summary>
-<pre><code>LOG</code></pre>
-</details>
-
+<div id="fundamental-geoms" class="section level2 unnumbered hasAnchor">
+<h2>Fundamental Geoms<a href="fundamental-geoms.html#fundamental-geoms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="area-plot" class="section level3 unnumbered hasAnchor">
+<h3>Area Plot<a href="fundamental-geoms.html#area-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="fundamental-geoms.html#cb43-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb43-2"><a href="fundamental-geoms.html#cb43-2" tabindex="-1"></a>  <span class="fu">geom_area</span>(<span class="at">fill =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb43-3"><a href="fundamental-geoms.html#cb43-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Area Plot&quot;</span>)</span></code></pre></div>
+</div>
+<div id="bar-chart" class="section level3 unnumbered hasAnchor">
+<h3>Bar Chart<a href="fundamental-geoms.html#bar-chart" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="fundamental-geoms.html#cb44-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb44-2"><a href="fundamental-geoms.html#cb44-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb44-3"><a href="fundamental-geoms.html#cb44-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Bar Chart&quot;</span>)</span></code></pre></div>
+</div>
+<div id="line-plot" class="section level3 unnumbered hasAnchor">
+<h3>Line Plot<a href="fundamental-geoms.html#line-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="fundamental-geoms.html#cb45-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb45-2"><a href="fundamental-geoms.html#cb45-2" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb45-3"><a href="fundamental-geoms.html#cb45-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Line Plot&quot;</span>)</span></code></pre></div>
+</div>
+<div id="scatterplot" class="section level3 unnumbered hasAnchor">
+<h3>Scatterplot<a href="fundamental-geoms.html#scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fundamental-geoms.html#cb46-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="fundamental-geoms.html#cb46-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">&quot;purple&quot;</span>) <span class="sc">+</span></span>
+<span id="cb46-3"><a href="fundamental-geoms.html#cb46-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Scatterplot&quot;</span>)</span></code></pre></div>
+</div>
+<div id="polygon-plot" class="section level3 unnumbered hasAnchor">
+<h3>Polygon Plot<a href="fundamental-geoms.html#polygon-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fundamental-geoms.html#cb47-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb47-2"><a href="fundamental-geoms.html#cb47-2" tabindex="-1"></a>  <span class="fu">geom_polygon</span>(<span class="at">fill =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb47-3"><a href="fundamental-geoms.html#cb47-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Polygon Plot&quot;</span>)</span></code></pre></div>
+</div>
+<div id="tile-plot" class="section level3 unnumbered hasAnchor">
+<h3>Tile Plot<a href="fundamental-geoms.html#tile-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="fundamental-geoms.html#cb48-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y)) <span class="sc">+</span> </span>
+<span id="cb48-2"><a href="fundamental-geoms.html#cb48-2" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">fill =</span> <span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="fundamental-geoms.html#cb48-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Tile Plot&quot;</span>)</span></code></pre></div>
+</div>
+<div id="text-annotation" class="section level3 unnumbered hasAnchor">
+<h3>Text Annotation<a href="fundamental-geoms.html#text-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="fundamental-geoms.html#cb49-1" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(x, y, <span class="at">label =</span> label)) <span class="sc">+</span> </span>
+<span id="cb49-2"><a href="fundamental-geoms.html#cb49-2" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb49-3"><a href="fundamental-geoms.html#cb49-3" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Text Plot&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="section-10.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="other-aesthetics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -344,7 +373,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/chapter11.Rmd",
+"link": "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/chapter03.Rmd",
 "text": "Edit"
 },
 "history": {

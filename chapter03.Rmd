@@ -5,9 +5,90 @@
 - 
 
 
-## Packages {-}
+## Introduction {-}
 
-## Getting help {-}
+```{r setup, include=FALSE}
+library(ggplot2)
+```
+
+This document explores the fundamental **geoms** in ggplot2, which serve as building blocks for visualizations. These geoms require **x** and **y** aesthetics and generally understand **color**, **size**, and sometimes **fill**.
+
+## Fundamental Geoms {-}
+
+### Area Plot {-}
+```{r, eval=FALSE}
+ggplot(mpg, aes(x, y)) + 
+  geom_area(fill = "lightblue", color = "black") +
+  ggtitle("Area Plot")
+```
+
+### Bar Chart {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y)) + 
+  geom_bar(stat = "identity", fill = "blue") +
+  ggtitle("Bar Chart")
+```
+
+### Line Plot {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y)) + 
+  geom_line(color = "red") +
+  ggtitle("Line Plot")
+```
+
+### Scatterplot {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y)) + 
+  geom_point(size = 3, color = "purple") +
+  ggtitle("Scatterplot")
+```
+
+### Polygon Plot {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y)) + 
+  geom_polygon(fill = "lightgreen", color = "black") +
+  ggtitle("Polygon Plot")
+```
+
+### Tile Plot {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y)) + 
+  geom_tile(fill = "orange") +
+  ggtitle("Tile Plot")
+```
+
+### Text Annotation {-}
+```{r, eval=FALSE}
+ggplot(df, aes(x, y, label = label)) + 
+  geom_text(size = 5, color = "black") +
+  ggtitle("Text Plot")
+```
+
+## Exercises {-}
+
+### {-}
+1. What geoms would you use to draw each of the following plots?
+- **Scatterplot**: `geom_point()`
+- **Line Chart**: `geom_line()`
+- **Histogram**: `geom_histogram()`
+- **Bar Chart**: `geom_bar(stat = "identity")`
+- **Pie Chart**: `geom_bar(width = 1, stat = "identity") + coord_polar(theta = "y")`
+
+### {-}
+2. Differences between `geom_path()` and `geom_polygon()`
+- `geom_path()` connects points in the order they appear.
+- `geom_polygon()` connects points and **closes** the shape by linking the last point back to the first.
+
+### {-}
+3. Differences between `geom_path()` and `geom_line()`
+- `geom_line()` connects points in order of **x values**.
+- `geom_path()` follows the exact order of points in the dataset.
+
+### {-}
+4. Low-level geoms used in composite geoms
+- **`geom_smooth()`**: Uses `geom_line()` and `geom_ribbon()`.
+- **`geom_boxplot()`**: Uses `geom_segment()` and `geom_rect()`.
+- **`geom_violin()`**: Uses `geom_density_ridges()`.
 
 
 
