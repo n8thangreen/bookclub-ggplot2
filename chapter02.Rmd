@@ -48,9 +48,9 @@ faithfuld                   2d density estimate of Old Faithful data
 luv_colours                 'colors()' in Luv space
 midwest                     Midwest demographics
 mpg                         Fuel economy data from 1999 to 2008 for 38 popular
-                            models of cars
+models of cars
 msleep                      An updated and expanded version of the mammals sleep
-                            dataset
+dataset
 presidential                Terms of 12 presidents from Eisenhower to Trump
 seals                       Vector field of seal movements
 txhousing                   Housing sales in TX
@@ -90,7 +90,7 @@ mpg %>%
          model = sub(" awd", "", model),
          model = sub(" 2wd", "", model),
          model = sub(" quattro", "", model)
-         ) %>% count(model) %>% arrange(desc(n))
+  ) %>% count(model) %>% arrange(desc(n))
 ```
 
 
@@ -141,9 +141,9 @@ ggplot(mpg, aes(x = cty, y = hwy)) +
 
 - directly correlated
 - issues
-  * discrete measurements
-  * overplotting
-  * scale
+* discrete measurements
+* overplotting
+* scale
 
 2. 
 
@@ -154,14 +154,14 @@ ggplot(mpg, aes(model, manufacturer)) + geom_point()
 - This plot maps model (specific car models) to the x-axis and manufacturer to the y-axis. Each point represents one observation in the dataset.
 
 - usefulness
-  * both variables are categorical
-  * no natural order
-  * cluttered
+* both variables are categorical
+* no natural order
+* cluttered
 
 - informative
-  * aggregate
-  * reorder
-  * facet
+* aggregate
+* reorder
+* facet
 
 3.
 
@@ -201,29 +201,29 @@ ggplot(mpg, aes(displ, hwy)) + geom_point(aes(colour = "blue"))
 
 - the second plots doesn't have a legend
 - think about how to colour
-  * tell a story
-  * less is more!
+* tell a story
+* less is more!
 
 ## Exercises {-}
 
 1. 
 
 - map to continuous values
-  * gradient scale
+* gradient scale
 
 ```{r}
 ggplot(mpg, aes(cty, hwy, colour = displ)) + geom_point()
 ```
 
 -  categorical variable
-  * unique colour
+* unique colour
 
 ```{r}
 ggplot(mpg, aes(cty, hwy, colour = class)) + geom_point()
 ```
 
 - more than one aesthetic
-  
+
 ```{r}
 ggplot(mpg, aes(cty, hwy, colour = class, size = displ)) + geom_point()
 ```
@@ -231,7 +231,7 @@ ggplot(mpg, aes(cty, hwy, colour = class, size = displ)) + geom_point()
 2.
 
 - throw error
-  * shapes discrete
+* shapes discrete
 
 ```{r eval=FALSE}
 ggplot(mpg, aes(cty, hwy, shape = displ)) + geom_point()
@@ -307,10 +307,10 @@ ggplot(mpg, aes(displ, cty)) +
 - The `scales` argument controls whether the axes in the facets are fixed or allowed to vary independently.
 
 - Options:
-  * `fixed` (default): All facets share the same x and y-axis scales.
-  * `free_x`: Each facet has its own x-axis scale.
-  * `free_y`: Each facet has its own y-axis scale.
-  * `free`: Each facet has its own x and y-axis scales.
+* `fixed` (default): All facets share the same x and y-axis scales.
+* `free_x`: Each facet has its own x-axis scale.
+* `free_y`: Each facet has its own y-axis scale.
+* `free`: Each facet has its own x and y-axis scales.
 
 - use when scale are different/the same
 
@@ -318,6 +318,216 @@ ggplot(mpg, aes(displ, cty)) +
 ggplot(mpg, aes(displ, cty)) +
   geom_point() +
   facet_wrap(~ class, scales = "free")
+```
+
+## Plot geoms {-}
+
+### Adding smoothers {-}
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth()
+#> `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+
+Turn off confidence interval
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+
+Wiggly
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(span = 0.2)
+```
+
+Smooth
+
+```{r}
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(span = 1)
+```
+
+Animate through span values
+
+```{r}
+library(ggplot2)
+library(gganimate)
+library(dplyr)
+
+span_values <- seq(0.1, 1, by = 0.1)
+
+create_loess_data <- function(span) {
+  # apply loess smoothing with the current span value
+  loess_model <- loess(hwy ~ displ, data = mpg, span = span)
+  
+  # Create a data frame with the fitted values from the loess model
+  smoothed <- data.frame(
+    displ = mpg$displ,
+    hwy = mpg$hwy,
+    fitted = predict(loess_model),
+    span = span
+  )
+  
+  return(smoothed)
+}
+
+# calculate smoothed data for each span value using loess
+smoothed_data <- bind_rows(
+  lapply(span_values, FUN = create_loess_data)
+)
+
+# use precomputed data
+p <- ggplot(smoothed_data, aes(displ, hwy)) +
+  geom_point() +
+  geom_line(aes(y = fitted, group = span, color = factor(span)), linewidth = 2) +
+  transition_manual(span) +  # animate over the span values
+  labs(title = "Loess Smoothing with span = {current_frame}",
+       x = "Displacement",
+       y = "Highway MPG")
+
+# render animation
+animate(p, nframes = length(span_values), duration = 5, width = 600, height = 400)
+```
+
+```{r eval=FALSE}
+?loess
+```
+
+```{r}
+library(mgcv)
+library(MASS)
+
+ggplot(mpg, aes(displ, hwy)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE, color = "black") +
+  geom_smooth(method = "gam", formula = y ~ s(x), color = "blue", se = FALSE) +  # GAM smoothing
+  geom_smooth(method = "lm", color = "red", se = FALSE) + # Linear regression
+  geom_smooth(method = "rlm", color = "darkgreen", se = FALSE)
+```
+
+
+### Box plots {-}
+
+```{r}
+ggplot(mpg, aes(drv, hwy)) + 
+  geom_point()
+```
+
+```{r}
+ggplot(mpg, aes(drv, hwy)) + geom_jitter()
+ggplot(mpg, aes(drv, hwy)) + geom_boxplot()
+ggplot(mpg, aes(drv, hwy)) + geom_violin()
+
+ggplot(mpg, aes(drv, hwy, col = drv)) +
+  geom_boxplot() +
+  geom_jitter() +
+  theme(legend.position = "none")  # remove legend
+```
+
+### Histograms and frequency polygons
+
+```{r}
+ggplot(mpg, aes(hwy)) + geom_histogram()
+#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+ggplot(mpg, aes(hwy)) + geom_freqpoly()
+#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+Interactively change `binwidth`
+
+```{r}
+library(manipulate)
+
+manipulate(
+  ggplot(mpg, aes(hwy)) + 
+    geom_freqpoly(binwidth = binwidth) +
+    labs(title = paste("Histogram with binwidth =", binwidth),
+         x = "Highway MPG", y = "Frequency"),
+  binwidth = slider(0.5, 7, step = 0.1, initial = 2.5)
+)
+```
+
+
+### Bar charts
+
+```{r}
+ggplot(mpg, aes(manufacturer)) + 
+  geom_bar()
+```
+
+Rotate x-axis labels
+
+```{r}
+ggplot(mpg, aes(manufacturer)) + 
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # rotate x-axis labels
+```
+
+Vary placement of x-axis labels
+
+```{r}
+ggplot(mpg, aes(manufacturer)) + 
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 0))  # rotate x-axis labels
+```
+
+## Exercises {-}
+
+1.
+```{r}
+ggplot(mpg, aes(cty, hwy)) + 
+  geom_jitter()
+```
+
+2.
+```{r}
+ggplot(mpg, aes(class, hwy)) + 
+  geom_boxplot()
+
+ggplot(mpg, aes(reorder(class, hwy), hwy)) + 
+  geom_boxplot()
+```
+
+3.
+By default, reorder() sorts the factor levels by the median
+
+7. 
+The weight aesthetic in geom_bar() allows you to specify the weight or frequency for each observation
+
+```{r}
+ggplot(mpg, aes(x = class, weight = cty)) + 
+  geom_bar()
+```
+
+8.
+```{r}
+ggplot(mpg, aes(x = model, fill = manufacturer)) + 
+  geom_bar(position = "dodge")
+```
+
+```{r}
+library(dplyr)
+
+# summarized data frame
+summary_data <- mpg %>%
+  count(trans, class)
+
+# heatmap-like plot using geom_tile
+ggplot(summary_data, aes(x = trans, y = class)) + 
+  geom_tile(aes(fill = n), width = 1, height = 1)
+
+ggplot(summary_data, aes(x = trans, y = class)) + 
+  geom_tile(aes(fill = n), width = 1, height = 1) +
+  scale_fill_viridis_c()
 ```
 
 ## Meeting Videos {-}
