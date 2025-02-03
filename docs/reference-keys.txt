@@ -1,5 +1,7 @@
 first-steps
 exercises
+histograms-and-frequency-polygons
+bar-charts
 individual-geoms
 collective-geoms
 statistical-summaries

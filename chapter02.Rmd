@@ -357,7 +357,7 @@ ggplot(mpg, aes(displ, hwy)) +
 
 Animate through span values
 
-```{r}
+```{r eval=FALSE}
 library(ggplot2)
 library(gganimate)
 library(dplyr)
@@ -397,9 +397,7 @@ p <- ggplot(smoothed_data, aes(displ, hwy)) +
 animate(p, nframes = length(span_values), duration = 5, width = 600, height = 400)
 ```
 
-```{r eval=FALSE}
-?loess
-```
+`?loess`
 
 ```{r}
 library(mgcv)

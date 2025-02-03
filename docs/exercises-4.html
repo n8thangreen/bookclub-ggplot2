@@ -23,15 +23,15 @@
 <meta name="author" content="ICON book club" />
 
 
-<meta name="date" content="2025-01-31" />
+<meta name="date" content="2025-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="fundamental-geoms.html"/>
-<link rel="next" href="meeting-videos-1.html"/>
+<link rel="prev" href="plot-geoms.html"/>
+<link rel="next" href="meeting-videos.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -160,6 +160,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="facets.html"><a href="facets.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html"><i class="fa fa-check"></i>Plot geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#adding-smoothers"><i class="fa fa-check"></i>Adding smoothers</a></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#box-plots"><i class="fa fa-check"></i>Box plots</a></li>
+<li class="chapter" data-level="1.0.2" data-path="plot-geoms.html"><a href="plot-geoms.html#histograms-and-frequency-polygons"><i class="fa fa-check"></i><b>1.0.2</b> Histograms and frequency polygons</a></li>
+<li class="chapter" data-level="1.0.3" data-path="plot-geoms.html"><a href="plot-geoms.html#bar-charts"><i class="fa fa-check"></i><b>1.0.3</b> Bar charts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 <li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i>Meeting Videos</a>
 <ul>
 <li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i>Cohort 1</a></li>
@@ -178,12 +186,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#tile-plot"><i class="fa fa-check"></i>Tile Plot</a></li>
 <li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#text-annotation"><i class="fa fa-check"></i>Text Annotation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li><a href="exercises-4.html#section" id="toc-section"></a></li>
-<li><a href="exercises-4.html#section-1" id="toc-section-1"></a></li>
-<li><a href="exercises-4.html#section-2" id="toc-section-2"></a></li>
-<li><a href="exercises-4.html#section-3" id="toc-section-3"></a></li>
+<li><a href="exercises-5.html#section" id="toc-section"></a></li>
+<li><a href="exercises-5.html#section-1" id="toc-section-1"></a></li>
+<li><a href="exercises-5.html#section-2" id="toc-section-2"></a></li>
+<li><a href="exercises-5.html#section-3" id="toc-section-3"></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i>Meeting Videos</a>
 <ul>
@@ -293,58 +301,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exercises-4" class="section level2 unnumbered hasAnchor">
 <h2>Exercises<a href="exercises-4.html#exercises-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="section" class="section level3 unnumbered">
-<h3 class="unnumbered"></h3>
 <ol style="list-style-type: decimal">
-<li>What geoms would you use to draw each of the following plots?</li>
+<li></li>
 </ol>
-<ul>
-<li><strong>Scatterplot</strong>: <code>geom_point()</code></li>
-<li><strong>Line Chart</strong>: <code>geom_line()</code></li>
-<li><strong>Histogram</strong>: <code>geom_histogram()</code></li>
-<li><strong>Bar Chart</strong>: <code>geom_bar(stat = "identity")</code></li>
-<li><strong>Pie Chart</strong>: <code>geom_bar(width = 1, stat = "identity") + coord_polar(theta = "y")</code></li>
-</ul>
-</div>
-<div id="section-1" class="section level3 unnumbered">
-<h3 class="unnumbered"></h3>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="exercises-4.html#cb68-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> </span>
+<span id="cb68-2"><a href="exercises-4.html#cb68-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Differences between <code>geom_path()</code> and <code>geom_polygon()</code></li>
+<li></li>
 </ol>
-<ul>
-<li><code>geom_path()</code> connects points in the order they appear.</li>
-<li><code>geom_polygon()</code> connects points and <strong>closes</strong> the shape by linking the last point back to the first.</li>
-</ul>
-</div>
-<div id="section-2" class="section level3 unnumbered">
-<h3 class="unnumbered"></h3>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="exercises-4.html#cb69-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, hwy)) <span class="sc">+</span> </span>
+<span id="cb69-2"><a href="exercises-4.html#cb69-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="exercises-4.html#cb70-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="fu">reorder</span>(class, hwy), hwy)) <span class="sc">+</span> </span>
+<span id="cb70-2"><a href="exercises-4.html#cb70-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-44-2.png" width="672" /></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Differences between <code>geom_path()</code> and <code>geom_line()</code></li>
+<li><p>By default, reorder() sorts the factor levels by the median</p></li>
+<li><p>The weight aesthetic in geom_bar() allows you to specify the weight or frequency for each observation</p></li>
 </ol>
-<ul>
-<li><code>geom_line()</code> connects points in order of <strong>x values</strong>.</li>
-<li><code>geom_path()</code> follows the exact order of points in the dataset.</li>
-</ul>
-</div>
-<div id="section-3" class="section level3 unnumbered">
-<h3 class="unnumbered"></h3>
-<ol start="4" style="list-style-type: decimal">
-<li>Low-level geoms used in composite geoms</li>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="exercises-4.html#cb71-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> class, <span class="at">weight =</span> cty)) <span class="sc">+</span> </span>
+<span id="cb71-2"><a href="exercises-4.html#cb71-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<ol start="8" style="list-style-type: decimal">
+<li></li>
 </ol>
-<ul>
-<li><strong><code>geom_smooth()</code></strong>: Uses <code>geom_line()</code> and <code>geom_ribbon()</code>.</li>
-<li><strong><code>geom_boxplot()</code></strong>: Uses <code>geom_segment()</code> and <code>geom_rect()</code>.</li>
-<li><strong><code>geom_violin()</code></strong>: Uses <code>geom_density_ridges()</code>.</li>
-</ul>
-</div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="exercises-4.html#cb72-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x =</span> model, <span class="at">fill =</span> manufacturer)) <span class="sc">+</span> </span>
+<span id="cb72-2"><a href="exercises-4.html#cb72-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="exercises-4.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb73-2"><a href="exercises-4.html#cb73-2" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="exercises-4.html#cb73-3" tabindex="-1"></a><span class="co"># summarized data frame</span></span>
+<span id="cb73-4"><a href="exercises-4.html#cb73-4" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> mpg <span class="sc">%&gt;%</span></span>
+<span id="cb73-5"><a href="exercises-4.html#cb73-5" tabindex="-1"></a>  <span class="fu">count</span>(trans, class)</span>
+<span id="cb73-6"><a href="exercises-4.html#cb73-6" tabindex="-1"></a></span>
+<span id="cb73-7"><a href="exercises-4.html#cb73-7" tabindex="-1"></a><span class="co"># heatmap-like plot using geom_tile</span></span>
+<span id="cb73-8"><a href="exercises-4.html#cb73-8" tabindex="-1"></a><span class="fu">ggplot</span>(summary_data, <span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> class)) <span class="sc">+</span> </span>
+<span id="cb73-9"><a href="exercises-4.html#cb73-9" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n), <span class="at">width =</span> <span class="dv">1</span>, <span class="at">height =</span> <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="exercises-4.html#cb74-1" tabindex="-1"></a><span class="fu">ggplot</span>(summary_data, <span class="fu">aes</span>(<span class="at">x =</span> trans, <span class="at">y =</span> class)) <span class="sc">+</span> </span>
+<span id="cb74-2"><a href="exercises-4.html#cb74-2" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">fill =</span> n), <span class="at">width =</span> <span class="dv">1</span>, <span class="at">height =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb74-3"><a href="exercises-4.html#cb74-3" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="fundamental-geoms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="meeting-videos-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plot-geoms.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="meeting-videos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -375,7 +381,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/chapter03.Rmd",
+"link": "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/chapter02.Rmd",
 "text": "Edit"
 },
 "history": {

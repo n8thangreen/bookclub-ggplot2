@@ -23,7 +23,7 @@
 <meta name="author" content="ICON book club" />
 
 
-<meta name="date" content="2025-01-31" />
+<meta name="date" content="2025-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="exercises-2.html"/>
-<link rel="next" href="meeting-videos.html"/>
+<link rel="next" href="plot-geoms.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -160,6 +160,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="" data-path="facets.html"><a href="facets.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html"><i class="fa fa-check"></i>Plot geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#adding-smoothers"><i class="fa fa-check"></i>Adding smoothers</a></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#box-plots"><i class="fa fa-check"></i>Box plots</a></li>
+<li class="chapter" data-level="1.0.2" data-path="plot-geoms.html"><a href="plot-geoms.html#histograms-and-frequency-polygons"><i class="fa fa-check"></i><b>1.0.2</b> Histograms and frequency polygons</a></li>
+<li class="chapter" data-level="1.0.3" data-path="plot-geoms.html"><a href="plot-geoms.html#bar-charts"><i class="fa fa-check"></i><b>1.0.3</b> Bar charts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
 <li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i>Meeting Videos</a>
 <ul>
 <li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i>Cohort 1</a></li>
@@ -178,12 +186,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#tile-plot"><i class="fa fa-check"></i>Tile Plot</a></li>
 <li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#text-annotation"><i class="fa fa-check"></i>Text Annotation</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a>
+<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a>
 <ul>
-<li><a href="exercises-4.html#section" id="toc-section"></a></li>
-<li><a href="exercises-4.html#section-1" id="toc-section-1"></a></li>
-<li><a href="exercises-4.html#section-2" id="toc-section-2"></a></li>
-<li><a href="exercises-4.html#section-3" id="toc-section-3"></a></li>
+<li><a href="exercises-5.html#section" id="toc-section"></a></li>
+<li><a href="exercises-5.html#section-1" id="toc-section-1"></a></li>
+<li><a href="exercises-5.html#section-2" id="toc-section-2"></a></li>
+<li><a href="exercises-5.html#section-3" id="toc-section-3"></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i>Meeting Videos</a>
 <ul>
@@ -344,13 +352,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <ul>
 <li><p>The <code>scales</code> argument controls whether the axes in the facets are fixed or allowed to vary independently.</p></li>
-<li><p>Options:</p>
-<ul>
-<li><code>fixed</code> (default): All facets share the same x and y-axis scales.</li>
-<li><code>free_x</code>: Each facet has its own x-axis scale.</li>
-<li><code>free_y</code>: Each facet has its own y-axis scale.</li>
-<li><code>free</code>: Each facet has its own x and y-axis scales.</li>
-</ul></li>
+<li><p>Options:</p></li>
+<li><p><code>fixed</code> (default): All facets share the same x and y-axis scales.</p></li>
+<li><p><code>free_x</code>: Each facet has its own x-axis scale.</p></li>
+<li><p><code>free_y</code>: Each facet has its own y-axis scale.</p></li>
+<li><p><code>free</code>: Each facet has its own x and y-axis scales.</p></li>
 <li><p>use when scale are different/the same</p></li>
 </ul>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="facets.html#cb41-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, cty)) <span class="sc">+</span></span>
@@ -365,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="exercises-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="meeting-videos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plot-geoms.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

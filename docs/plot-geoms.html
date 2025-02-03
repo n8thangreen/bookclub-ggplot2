@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Plot geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club</title>
+  <meta name="description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Plot geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
+  <meta name="github-repo" content="r4ds/bookclub-ggplot2" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Plot geoms | ggplot2: Elegant Graphics for Data Analysis (3e) Book Club" />
+  
+  <meta name="twitter:description" content="This website is the product of the ICON ggplot2: Elegant Graphics for Data Analysis (3e)." />
+  
+
+<meta name="author" content="ICON book club" />
+
+
+<meta name="date" content="2025-02-03" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="facets.html"/>
+<link rel="next" href="exercises-4.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ggplot2 Book Club</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a>
+<ul>
+<li class="chapter" data-level="" data-path="book-club-meetings.html"><a href="book-club-meetings.html"><i class="fa fa-check"></i>Book club meetings</a></li>
+<li class="chapter" data-level="" data-path="pace.html"><a href="pace.html"><i class="fa fa-check"></i>Pace</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="first-steps.html"><a href="first-steps.html"><i class="fa fa-check"></i><b>1</b> First steps</a>
+<ul>
+<li class="chapter" data-level="" data-path="mapping-components.html"><a href="mapping-components.html"><i class="fa fa-check"></i>Mapping components</a></li>
+<li class="chapter" data-level="" data-path="other-r-graphics.html"><a href="other-r-graphics.html"><i class="fa fa-check"></i>Other R graphics</a></li>
+<li class="chapter" data-level="" data-path="fuel-economy-data.html"><a href="fuel-economy-data.html"><i class="fa fa-check"></i>Fuel economy data</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="fuel-economy-data.html"><a href="fuel-economy-data.html#exercises"><i class="fa fa-check"></i><b>1.0.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="key-components.html"><a href="key-components.html"><i class="fa fa-check"></i>Key components</a></li>
+<li class="chapter" data-level="" data-path="exercises-1.html"><a href="exercises-1.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="colour-size-shape-and-other-aesthetic-attributes.html"><a href="colour-size-shape-and-other-aesthetic-attributes.html"><i class="fa fa-check"></i>Colour, size, shape and other aesthetic attributes</a></li>
+<li class="chapter" data-level="" data-path="exercises-2.html"><a href="exercises-2.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="facets.html"><a href="facets.html"><i class="fa fa-check"></i>Facets</a>
+<ul>
+<li class="chapter" data-level="" data-path="facets.html"><a href="facets.html#exercises-3"><i class="fa fa-check"></i>Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html"><i class="fa fa-check"></i>Plot geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#adding-smoothers"><i class="fa fa-check"></i>Adding smoothers</a></li>
+<li class="chapter" data-level="" data-path="plot-geoms.html"><a href="plot-geoms.html#box-plots"><i class="fa fa-check"></i>Box plots</a></li>
+<li class="chapter" data-level="1.0.2" data-path="plot-geoms.html"><a href="plot-geoms.html#histograms-and-frequency-polygons"><i class="fa fa-check"></i><b>1.0.2</b> Histograms and frequency polygons</a></li>
+<li class="chapter" data-level="1.0.3" data-path="plot-geoms.html"><a href="plot-geoms.html#bar-charts"><i class="fa fa-check"></i><b>1.0.3</b> Bar charts</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-4.html"><a href="exercises-4.html"><i class="fa fa-check"></i>Exercises</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos.html"><a href="meeting-videos.html#cohort-1"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="individual-geoms.html"><a href="individual-geoms.html"><i class="fa fa-check"></i><b>2</b> Individual geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html"><i class="fa fa-check"></i>Fundamental Geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#area-plot"><i class="fa fa-check"></i>Area Plot</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#bar-chart"><i class="fa fa-check"></i>Bar Chart</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#line-plot"><i class="fa fa-check"></i>Line Plot</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#scatterplot"><i class="fa fa-check"></i>Scatterplot</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#polygon-plot"><i class="fa fa-check"></i>Polygon Plot</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#tile-plot"><i class="fa fa-check"></i>Tile Plot</a></li>
+<li class="chapter" data-level="" data-path="fundamental-geoms.html"><a href="fundamental-geoms.html#text-annotation"><i class="fa fa-check"></i>Text Annotation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="exercises-5.html"><a href="exercises-5.html"><i class="fa fa-check"></i>Exercises</a>
+<ul>
+<li><a href="exercises-5.html#section" id="toc-section"></a></li>
+<li><a href="exercises-5.html#section-1" id="toc-section-1"></a></li>
+<li><a href="exercises-5.html#section-2" id="toc-section-2"></a></li>
+<li><a href="exercises-5.html#section-3" id="toc-section-3"></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-1.html"><a href="meeting-videos-1.html#cohort-1-1"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="collective-geoms.html"><a href="collective-geoms.html"><i class="fa fa-check"></i><b>3</b> Collective geoms</a>
+<ul>
+<li class="chapter" data-level="" data-path="packages.html"><a href="packages.html"><i class="fa fa-check"></i>Packages</a></li>
+<li class="chapter" data-level="" data-path="getting-help.html"><a href="getting-help.html"><i class="fa fa-check"></i>Getting help</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-2.html"><a href="meeting-videos-2.html#cohort-1-2"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="statistical-summaries.html"><a href="statistical-summaries.html"><i class="fa fa-check"></i><b>4</b> Statistical summaries</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-3.html"><a href="meeting-videos-3.html#cohort-1-3"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>5</b> Maps</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-5.html"><a href="section-5.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-4.html"><a href="meeting-videos-4.html#cohort-1-4"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="networks.html"><a href="networks.html"><i class="fa fa-check"></i><b>6</b> Networks</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-6.html"><a href="section-6.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-5.html"><a href="meeting-videos-5.html#cohort-1-5"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="annotations.html"><a href="annotations.html"><i class="fa fa-check"></i><b>7</b> Annotations</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-7.html"><a href="section-7.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-6.html"><a href="meeting-videos-6.html#cohort-1-6"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="arranging-plots.html"><a href="arranging-plots.html"><i class="fa fa-check"></i><b>8</b> Arranging plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-8.html"><a href="section-8.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-7.html"><a href="meeting-videos-7.html#cohort-1-7"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="position-scales-and-axes.html"><a href="position-scales-and-axes.html"><i class="fa fa-check"></i><b>9</b> Position scales and axes</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-9.html"><a href="section-9.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-8.html"><a href="meeting-videos-8.html#cohort-1-8"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="colour-scales-and-legends.html"><a href="colour-scales-and-legends.html"><i class="fa fa-check"></i><b>10</b> Colour scales and legends</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-10.html"><a href="section-10.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-9.html"><a href="meeting-videos-9.html#cohort-1-9"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="other-aesthetics.html"><a href="other-aesthetics.html"><i class="fa fa-check"></i><b>11</b> Other aesthetics</a>
+<ul>
+<li class="chapter" data-level="" data-path="section-11.html"><a href="section-11.html"><i class="fa fa-check"></i>?</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-10.html"><a href="meeting-videos-10.html#cohort-1-10"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="template.html"><a href="template.html"><i class="fa fa-check"></i><b>12</b> TEMPLATE</a>
+<ul>
+<li class="chapter" data-level="" data-path="slide-1.html"><a href="slide-1.html"><i class="fa fa-check"></i>SLIDE 1</a></li>
+<li class="chapter" data-level="" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html"><i class="fa fa-check"></i>Meeting Videos</a>
+<ul>
+<li class="chapter" data-level="" data-path="meeting-videos-11.html"><a href="meeting-videos-11.html#cohort-1-11"><i class="fa fa-check"></i>Cohort 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ggplot2: Elegant Graphics for Data Analysis (3e) Book Club</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="plot-geoms" class="section level2 unnumbered hasAnchor">
+<h2>Plot geoms<a href="plot-geoms.html#plot-geoms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="adding-smoothers" class="section level3 unnumbered hasAnchor">
+<h3>Adding smoothers<a href="plot-geoms.html#adding-smoothers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="plot-geoms.html#cb42-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb42-2"><a href="plot-geoms.html#cb42-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb42-3"><a href="plot-geoms.html#cb42-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="plot-geoms.html#cb44-1" tabindex="-1"></a><span class="co">#&gt; `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</span></span></code></pre></div>
+<p>Turn off confidence interval</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="plot-geoms.html#cb45-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb45-2"><a href="plot-geoms.html#cb45-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb45-3"><a href="plot-geoms.html#cb45-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p>Wiggly</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="plot-geoms.html#cb47-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb47-2"><a href="plot-geoms.html#cb47-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb47-3"><a href="plot-geoms.html#cb47-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="fl">0.2</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p>Smooth</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="plot-geoms.html#cb49-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb49-2"><a href="plot-geoms.html#cb49-2" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb49-3"><a href="plot-geoms.html#cb49-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">span =</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p>Animate through span values</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="plot-geoms.html#cb51-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb51-2"><a href="plot-geoms.html#cb51-2" tabindex="-1"></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb51-3"><a href="plot-geoms.html#cb51-3" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb51-4"><a href="plot-geoms.html#cb51-4" tabindex="-1"></a></span>
+<span id="cb51-5"><a href="plot-geoms.html#cb51-5" tabindex="-1"></a>span_values <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.1</span>)</span>
+<span id="cb51-6"><a href="plot-geoms.html#cb51-6" tabindex="-1"></a></span>
+<span id="cb51-7"><a href="plot-geoms.html#cb51-7" tabindex="-1"></a>create_loess_data <span class="ot">&lt;-</span> <span class="cf">function</span>(span) {</span>
+<span id="cb51-8"><a href="plot-geoms.html#cb51-8" tabindex="-1"></a>  <span class="co"># apply loess smoothing with the current span value</span></span>
+<span id="cb51-9"><a href="plot-geoms.html#cb51-9" tabindex="-1"></a>  loess_model <span class="ot">&lt;-</span> <span class="fu">loess</span>(hwy <span class="sc">~</span> displ, <span class="at">data =</span> mpg, <span class="at">span =</span> span)</span>
+<span id="cb51-10"><a href="plot-geoms.html#cb51-10" tabindex="-1"></a>  </span>
+<span id="cb51-11"><a href="plot-geoms.html#cb51-11" tabindex="-1"></a>  <span class="co"># Create a data frame with the fitted values from the loess model</span></span>
+<span id="cb51-12"><a href="plot-geoms.html#cb51-12" tabindex="-1"></a>  smoothed <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb51-13"><a href="plot-geoms.html#cb51-13" tabindex="-1"></a>    <span class="at">displ =</span> mpg<span class="sc">$</span>displ,</span>
+<span id="cb51-14"><a href="plot-geoms.html#cb51-14" tabindex="-1"></a>    <span class="at">hwy =</span> mpg<span class="sc">$</span>hwy,</span>
+<span id="cb51-15"><a href="plot-geoms.html#cb51-15" tabindex="-1"></a>    <span class="at">fitted =</span> <span class="fu">predict</span>(loess_model),</span>
+<span id="cb51-16"><a href="plot-geoms.html#cb51-16" tabindex="-1"></a>    <span class="at">span =</span> span</span>
+<span id="cb51-17"><a href="plot-geoms.html#cb51-17" tabindex="-1"></a>  )</span>
+<span id="cb51-18"><a href="plot-geoms.html#cb51-18" tabindex="-1"></a>  </span>
+<span id="cb51-19"><a href="plot-geoms.html#cb51-19" tabindex="-1"></a>  <span class="fu">return</span>(smoothed)</span>
+<span id="cb51-20"><a href="plot-geoms.html#cb51-20" tabindex="-1"></a>}</span>
+<span id="cb51-21"><a href="plot-geoms.html#cb51-21" tabindex="-1"></a></span>
+<span id="cb51-22"><a href="plot-geoms.html#cb51-22" tabindex="-1"></a><span class="co"># calculate smoothed data for each span value using loess</span></span>
+<span id="cb51-23"><a href="plot-geoms.html#cb51-23" tabindex="-1"></a>smoothed_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb51-24"><a href="plot-geoms.html#cb51-24" tabindex="-1"></a>  <span class="fu">lapply</span>(span_values, <span class="at">FUN =</span> create_loess_data)</span>
+<span id="cb51-25"><a href="plot-geoms.html#cb51-25" tabindex="-1"></a>)</span>
+<span id="cb51-26"><a href="plot-geoms.html#cb51-26" tabindex="-1"></a></span>
+<span id="cb51-27"><a href="plot-geoms.html#cb51-27" tabindex="-1"></a><span class="co"># use precomputed data</span></span>
+<span id="cb51-28"><a href="plot-geoms.html#cb51-28" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(smoothed_data, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span></span>
+<span id="cb51-29"><a href="plot-geoms.html#cb51-29" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb51-30"><a href="plot-geoms.html#cb51-30" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> fitted, <span class="at">group =</span> span, <span class="at">color =</span> <span class="fu">factor</span>(span)), <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb51-31"><a href="plot-geoms.html#cb51-31" tabindex="-1"></a>  <span class="fu">transition_manual</span>(span) <span class="sc">+</span>  <span class="co"># animate over the span values</span></span>
+<span id="cb51-32"><a href="plot-geoms.html#cb51-32" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Loess Smoothing with span = {current_frame}&quot;</span>,</span>
+<span id="cb51-33"><a href="plot-geoms.html#cb51-33" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Displacement&quot;</span>,</span>
+<span id="cb51-34"><a href="plot-geoms.html#cb51-34" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Highway MPG&quot;</span>)</span>
+<span id="cb51-35"><a href="plot-geoms.html#cb51-35" tabindex="-1"></a></span>
+<span id="cb51-36"><a href="plot-geoms.html#cb51-36" tabindex="-1"></a><span class="co"># render animation</span></span>
+<span id="cb51-37"><a href="plot-geoms.html#cb51-37" tabindex="-1"></a><span class="fu">animate</span>(p, <span class="at">nframes =</span> <span class="fu">length</span>(span_values), <span class="at">duration =</span> <span class="dv">5</span>, <span class="at">width =</span> <span class="dv">600</span>, <span class="at">height =</span> <span class="dv">400</span>)</span></code></pre></div>
+<p><code>?loess</code></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="plot-geoms.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(mgcv)</span>
+<span id="cb52-2"><a href="plot-geoms.html#cb52-2" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb52-3"><a href="plot-geoms.html#cb52-3" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="plot-geoms.html#cb52-4" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(displ, hwy)) <span class="sc">+</span> </span>
+<span id="cb52-5"><a href="plot-geoms.html#cb52-5" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb52-6"><a href="plot-geoms.html#cb52-6" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb52-7"><a href="plot-geoms.html#cb52-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">s</span>(x), <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span>  <span class="co"># GAM smoothing</span></span>
+<span id="cb52-8"><a href="plot-geoms.html#cb52-8" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Linear regression</span></span>
+<span id="cb52-9"><a href="plot-geoms.html#cb52-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;rlm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;darkgreen&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;
+## `geom_smooth()` using formula = &#39;y ~ x&#39;
+## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+</div>
+<div id="box-plots" class="section level3 unnumbered hasAnchor">
+<h3>Box plots<a href="plot-geoms.html#box-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="plot-geoms.html#cb54-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> </span>
+<span id="cb54-2"><a href="plot-geoms.html#cb54-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="plot-geoms.html#cb55-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="plot-geoms.html#cb56-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-37-2.png" width="672" /></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="plot-geoms.html#cb57-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy)) <span class="sc">+</span> <span class="fu">geom_violin</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-37-3.png" width="672" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="plot-geoms.html#cb58-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(drv, hwy, <span class="at">col =</span> drv)) <span class="sc">+</span></span>
+<span id="cb58-2"><a href="plot-geoms.html#cb58-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb58-3"><a href="plot-geoms.html#cb58-3" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb58-4"><a href="plot-geoms.html#cb58-4" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)  <span class="co"># remove legend</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-37-4.png" width="672" /></p>
+</div>
+<div id="histograms-and-frequency-polygons" class="section level3 hasAnchor" number="1.0.2">
+<h3><span class="header-section-number">1.0.2</span> Histograms and frequency polygons<a href="plot-geoms.html#histograms-and-frequency-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="plot-geoms.html#cb59-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="plot-geoms.html#cb61-1" tabindex="-1"></a><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span>
+<span id="cb61-2"><a href="plot-geoms.html#cb61-2" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="plot-geoms.html#cb61-3" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy)) <span class="sc">+</span> <span class="fu">geom_freqpoly</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-38-2.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="plot-geoms.html#cb63-1" tabindex="-1"></a><span class="co">#&gt; `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<p>Interactively change <code>binwidth</code></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="plot-geoms.html#cb64-1" tabindex="-1"></a><span class="fu">library</span>(manipulate)</span>
+<span id="cb64-2"><a href="plot-geoms.html#cb64-2" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="plot-geoms.html#cb64-3" tabindex="-1"></a><span class="fu">manipulate</span>(</span>
+<span id="cb64-4"><a href="plot-geoms.html#cb64-4" tabindex="-1"></a>  <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy)) <span class="sc">+</span> </span>
+<span id="cb64-5"><a href="plot-geoms.html#cb64-5" tabindex="-1"></a>    <span class="fu">geom_freqpoly</span>(<span class="at">binwidth =</span> binwidth) <span class="sc">+</span></span>
+<span id="cb64-6"><a href="plot-geoms.html#cb64-6" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">&quot;Histogram with binwidth =&quot;</span>, binwidth),</span>
+<span id="cb64-7"><a href="plot-geoms.html#cb64-7" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">&quot;Highway MPG&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>),</span>
+<span id="cb64-8"><a href="plot-geoms.html#cb64-8" tabindex="-1"></a>  <span class="at">binwidth =</span> <span class="fu">slider</span>(<span class="fl">0.5</span>, <span class="dv">7</span>, <span class="at">step =</span> <span class="fl">0.1</span>, <span class="at">initial =</span> <span class="fl">2.5</span>)</span>
+<span id="cb64-9"><a href="plot-geoms.html#cb64-9" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
+</div>
+<div id="bar-charts" class="section level3 hasAnchor" number="1.0.3">
+<h3><span class="header-section-number">1.0.3</span> Bar charts<a href="plot-geoms.html#bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="plot-geoms.html#cb65-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(manufacturer)) <span class="sc">+</span> </span>
+<span id="cb65-2"><a href="plot-geoms.html#cb65-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p>Rotate x-axis labels</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="plot-geoms.html#cb66-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(manufacturer)) <span class="sc">+</span> </span>
+<span id="cb66-2"><a href="plot-geoms.html#cb66-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb66-3"><a href="plot-geoms.html#cb66-3" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))  <span class="co"># rotate x-axis labels</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>Vary placement of x-axis labels</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="plot-geoms.html#cb67-1" tabindex="-1"></a><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(manufacturer)) <span class="sc">+</span> </span>
+<span id="cb67-2"><a href="plot-geoms.html#cb67-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb67-3"><a href="plot-geoms.html#cb67-3" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">0</span>))  <span class="co"># rotate x-axis labels</span></span></code></pre></div>
+<p><img src="bookclub-ggplot2_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="facets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exercises-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/n8thangreen/bookclub-ggplot2/edit/main/chapter02.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
